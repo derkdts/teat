@@ -1,11 +1,13 @@
- import streamlit as st
+import streamlit as st
  
 
- def main():
+
+def main():
   st.title("Чек-лист по городам")
  
 
-  checklist_items = {
+
+checklist_items = {
   "checkbox_A": "A, B - Алматы",
   "checkbox_Z": "Z - Астана",
   "checkbox_X": "Х - Шымкент",
@@ -21,34 +23,33 @@
   "checkbox_T": "Т - Петропавловск"
   }
  
-
-  if 'checkbox_states' not in st.session_state:
-  st.session_state.checkbox_states = {key: False for key in checklist_items}
+if 'checkbox_states' not in st.session_state:
+    st.session_state.checkbox_states = {key: False for key in checklist_items}
  
 
-  cols = st.columns(3)
-  i = 0
-  for key, label in checklist_items.items():
+cols = st.columns(3)
+i = 0
+for key, label in checklist_items.items():
   col_num = i % 3
   st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key)
   i+=1
  
 
-  completed_count = sum(st.session_state.checkbox_states.values())
-  total_count = len(checklist_items)
+completed_count = sum(st.session_state.checkbox_states.values())
+total_count = len(checklist_items)
  
 
-  progress_percent = int((completed_count / total_count) * 100)
-  st.progress(progress_percent)
-  st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
+progress_percent = int((completed_count / total_count) * 100)
+st.progress(progress_percent)
+st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
  
 
-  if completed_count == total_count:
-  st.success("Поздравляем! Все пункты выполнены!")
-  if st.button("Сбросить прогресс"):
-  st.session_state.checkbox_states = {key: False for key in checklist_items}
-  st.rerun()
+if completed_count == total_count:
+    st.success("Поздравляем! Все пункты выполнены!")
+if st.button("Сбросить прогресс"):
+    st.session_state.checkbox_states = {key: False for key in checklist_items}
+    st.rerun()
  
 
- if __name__ == "__main__":
+if __name__ == "__main__":
   main()

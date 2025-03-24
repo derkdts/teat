@@ -31,7 +31,7 @@ checklist_items = {
   "checkbox_P": "P - Костанай",
   "checkbox_H": "H - Тараз",
   "checkbox_T": "T - Петропавловск"
-  }
+}
  
 
 if 'checkbox_states' not in st.session_state:
@@ -46,12 +46,12 @@ def reset_progress():
   st.button("Сбросить прогресс", on_click=reset_progress)
  
 
-  cols = st.columns(3)
-  i = 0
-  for key, label in checklist_items.items():
-    col_num = i % 3
-    st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key, value=st.session_state.checkbox_states[key])
-    i+=1
+cols = st.columns(3)
+i = 0
+for key, label in checklist_items.items():
+  col_num = i % 3
+  st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key, value=st.session_state.checkbox_states[key])
+  i+=1
  
 
   completed_count = sum(st.session_state.checkbox_states.values())

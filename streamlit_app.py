@@ -31,7 +31,7 @@ checklist_items = {
   "checkbox_P": "P - Костанай",
   "checkbox_H": "H - Тараз",
   "checkbox_T": "T - Петропавловск",
-  }
+}
  
 
   # Инициализация состояния

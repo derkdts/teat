@@ -7,14 +7,14 @@ def main():
  
 
   # Добавляем JavaScript для изменения заголовка страницы
-  components.html(
-  """
-  <script>
-  document.title = 'Чек-лист по городам';
-  </script>
-  """,
-  height=0,
-  )
+components.html(
+"""
+<script>
+document.title = 'Чек-лист по городам';
+</script>
+""",
+height=0,
+)
  
 
 checklist_items = {
@@ -39,19 +39,19 @@ if 'checkbox_states' not in st.session_state:
  
 
 def reset_progress():
- st.session_state.checkbox_states = {key: False for key in checklist_items}
- st.rerun()
+  for key in st.session_state.checkbox_states:
+   st.session_state.checkbox_states[key] = False
  
 
-st.button("Сбросить прогресс", on_click=reset_progress)
+  st.button("Сбросить прогресс", on_click=reset_progress)
  
 
-cols = st.columns(3)
-i = 0
-for key, label in checklist_items.items():
-  col_num = i % 3
-  st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key, value=st.session_state.checkbox_states[key])
-  i+=1
+  cols = st.columns(3)
+  i = 0
+  for key, label in checklist_items.items():
+    col_num = i % 3
+    st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key, value=st.session_state.checkbox_states[key])
+    i+=1
  
 
   completed_count = sum(st.session_state.checkbox_states.values())

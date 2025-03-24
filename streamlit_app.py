@@ -1,20 +1,20 @@
 import streamlit as st
 import streamlit.components.v1 as components
-
+ 
 
 def main():
   st.title("Чек-лист по городам")
  
 
-  # Добавляем JavaScript для изменения заголовка страницы
-  components.html(
-  """
-  <script>
-  document.title = 'Чек-лист по городам - Ваше название';
-  </script>
-  """,
-  height=0,
-  )
+ # Добавляем JavaScript для изменения заголовка страницы
+components.html(
+"""
+<script>
+document.title = 'Чек-лист по городам';
+</script>
+""",
+height=0,
+)
  
 
 checklist_items = {
@@ -53,13 +53,13 @@ for key, label in checklist_items.items():
   i+=1
  
 
-  completed_count = sum(st.session_state.checkbox_states.values())
-  total_count = len(checklist_items)
+completed_count = sum(st.session_state.checkbox_states.values())
+total_count = len(checklist_items)
  
 
-  progress_percent = int((completed_count / total_count) * 100)
-  st.progress(progress_percent)
-  st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
+progress_percent = int((completed_count / total_count) * 100)
+st.progress(progress_percent)
+st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
  
 
 if completed_count == total_count:

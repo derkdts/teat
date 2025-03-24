@@ -7,17 +7,17 @@ def main():
  
 
   # JavaScript для изменения заголовка страницы
-  components.html(
-  """
-  <script>
-  document.title = 'Чек-лист по городам';
-  </script>
-  """,
-  height=0,
-  )
+components.html(
+"""
+<script>
+document.title = 'Чек-лист по городам';
+</script>
+""",
+height=0,
+)
  
 
-  checklist_items = {
+checklist_items = {
   "checkbox_A": "A, B - Алматы",
   "checkbox_Z": "Z - Астана",
   "checkbox_X": "Х - Шымкент",
@@ -45,11 +45,11 @@ def reset_progress():
  
 
   # Кнопка сброса
-  st.button("Сбросить прогресс", on_click=reset_progress)
+st.button("Сбросить прогресс", on_click=reset_progress)
  
 
   # Создание колонок
-  cols = st.columns(3)
+cols = st.columns(3)
  
 
   # Создание чекбоксов
@@ -61,14 +61,14 @@ for i, (key, label) in enumerate(checklist_items.items()):
  
 
   # Вычисление прогресса
-  completed_count = sum(st.session_state.checkbox_states.values())
-  total_count = len(checklist_items)
+completed_count = sum(st.session_state.checkbox_states.values())
+total_count = len(checklist_items)
  
 
   # Отображение прогресса
-  progress_percent = int((completed_count / total_count) * 100)
-  st.progress(progress_percent)
-  st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
+progress_percent = int((completed_count / total_count) * 100)
+st.progress(progress_percent)
+st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
  
 
   # Сообщение об успехе

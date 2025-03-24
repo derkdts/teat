@@ -42,7 +42,7 @@ def reset_progress():
   st.session_state.checkbox_states = {key: False for key in checklist_items}
  
 
-  st.button("Сбросить прогресс", on_click=reset_progress)
+st.button("Сбросить прогресс", on_click=reset_progress)
  
 
 cols = st.columns(3)

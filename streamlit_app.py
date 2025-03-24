@@ -47,8 +47,8 @@ total_count = len(checklist_items)
  
 
 progress_percent = int((completed_count / total_count) * 100)
-  st.progress(progress_percent)
-  st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
+st.progress(progress_percent)
+st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
  
 
 if completed_count == total_count:

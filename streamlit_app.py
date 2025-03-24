@@ -4,7 +4,7 @@ import streamlit as st
 def page_one():
   st.header("Страница с чек-листом по городам")
   # Ваш код для чек-листа по городам здесь...
-  checklist_items = {
+checklist_items = {
   "checkbox_A": "A, B - Алматы",
   "checkbox_Z": "Z - Астана",
   "checkbox_X": "Х - Шымкент",

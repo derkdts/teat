@@ -54,6 +54,7 @@ for key, label in checklist_items.items():
   i+=1
  
 
+  # Вычисляем и отображаем прогресс только один раз
   completed_count = sum(st.session_state.checkbox_states.values())
   total_count = len(checklist_items)
  

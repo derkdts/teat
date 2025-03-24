@@ -5,7 +5,6 @@
   st.title("Чек-лист по городам")
  
 
-  # Пункты чек-листа
   checklist_items = {
   "checkbox_A": "A, B - Алматы",
   "checkbox_Z": "Z - Астана",
@@ -23,38 +22,32 @@
   }
  
 
-  # Инициализация состояния сессии для чекбоксов
   if 'checkbox_states' not in st.session_state:
   st.session_state.checkbox_states = {key: False for key in checklist_items}
  
 
-  # Создаем чек-листы с использованием st.columns
-  cols = st.columns(3) # разбиваем на 3 колонки
+  cols = st.columns(3)
   i = 0
   for key, label in checklist_items.items():
-  col_num = i % 3 # определяем номер колонки
+  col_num = i % 3
   st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key)
   i+=1
  
 
-  # Считаем сколько отмечено чекбоксов
   completed_count = sum(st.session_state.checkbox_states.values())
   total_count = len(checklist_items)
  
 
-  # Отображение прогресса в процентах
   progress_percent = int((completed_count / total_count) * 100)
   st.progress(progress_percent)
   st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
  
 
-  # Проверяем, все ли пункты выполнены
   if completed_count == total_count:
   st.success("Поздравляем! Все пункты выполнены!")
-  # Добавляем кнопку сброса
   if st.button("Сбросить прогресс"):
   st.session_state.checkbox_states = {key: False for key in checklist_items}
-  st.rerun() # перезапускаем, чтобы обновить значения
+  st.rerun()
  
 
  if __name__ == "__main__":

@@ -17,7 +17,7 @@ def main():
   )
  
 
-  checklist_items = {
+ checklist_items = {
   "checkbox_A": "A, B - Алматы",
   "checkbox_Z": "Z - Астана",
   "checkbox_X": "Х - Шымкент",

@@ -39,7 +39,7 @@ if 'checkbox_states' not in st.session_state:
  
 
 def reset_progress():
-  st.session_state.checkbox_states = {key: False for key in checklist_items}
+st.session_state.checkbox_states = {key: False for key in checklist_items}
  
 
 st.button("Сбросить прогресс", on_click=reset_progress)

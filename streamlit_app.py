@@ -1,7 +1,7 @@
-import streamlit as st
+ import streamlit as st
  
 
-def main():
+ def main():
   st.title("Чек-лист по городам")
  
 
@@ -39,10 +39,17 @@ def main():
 
   # Считаем сколько отмечено чекбоксов
   completed_count = sum(st.session_state.checkbox_states.values())
+  total_count = len(checklist_items)
+ 
+
+  # Отображение прогресса в процентах
+  progress_percent = int((completed_count / total_count) * 100)
+  st.progress(progress_percent)
+  st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
  
 
   # Проверяем, все ли пункты выполнены
-  if completed_count == len(checklist_items):
+  if completed_count == total_count:
   st.success("Поздравляем! Все пункты выполнены!")
   # Добавляем кнопку сброса
   if st.button("Сбросить прогресс"):

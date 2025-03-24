@@ -1,7 +1,7 @@
- import streamlit as st
+import streamlit as st
  
 
- def main():
+def main():
   st.title("Чек-лист по городам")
  
 

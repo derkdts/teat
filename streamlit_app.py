@@ -31,11 +31,11 @@ def reset_progress():
  
 
 cols = st.columns(3)
-  i = 0
-  for key, label in checklist_items.items():
-  col_num = i % 3
-  st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key)
-  i+=1
+i = 0
+for key, label in checklist_items.items():
+col_num = i % 3
+st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key)
+i+=1
  
 
 completed_count = sum(st.session_state.checkbox_states.values())

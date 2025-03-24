@@ -29,22 +29,22 @@ def reset_progress():
   st.session_state.checkbox_states = {key: False for key in checklist_items}
  
 
-st.button("Сбросить прогресс", on_click=reset_progress)
+  st.button("Сбросить прогресс", on_click=reset_progress)
  
 
-cols = st.columns(3)
-for i, (key, label) in enumerate(checklist_items.items()):
-  col_num = i % 3
+  cols = st.columns(3)
+  for i, (key, label) in enumerate(checklist_items.items()):
+   col_num = i % 3
   st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key, value=st.session_state.checkbox_states[key])
  
 
-completed_count = sum(st.session_state.checkbox_states.values())
-total_count = len(checklist_items)
+  completed_count = sum(st.session_state.checkbox_states.values())
+  total_count = len(checklist_items)
  
 
-progress_percent = int((completed_count / total_count) * 100)
-st.progress(progress_percent)
-st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
+  progress_percent = int((completed_count / total_count) * 100)
+  st.progress(progress_percent)
+  st.write(f"Выполнено: {progress_percent}% ({completed_count}/{total_count})")
  
 
 if completed_count == total_count:
@@ -68,13 +68,13 @@ def add_task():
  
 
   # Input for new task
-st.text_input("Новая задача:", key="new_task", on_change=add_task)
+  st.text_input("Новая задача:", key="new_task", on_change=add_task)
  
 
   # Display tasks with checkboxes
 for i, task in enumerate(st.session_state.tasks):
-  checkbox_key = f"task_{i}"
-  st.checkbox(task, key=checkbox_key)
+ checkbox_key = f"task_{i}"
+st.checkbox(task, key=checkbox_key)
  
 
 def main():

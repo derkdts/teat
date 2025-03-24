@@ -1,9 +1,11 @@
 import streamlit as st
  
 
+
 def main():
   st.title("Чек-лист по городам")
  
+
 
 checklist_items = {
   "checkbox_A": "A, B - Алматы",
@@ -22,6 +24,7 @@ checklist_items = {
   }
  
 
+
 if 'checkbox_states' not in st.session_state:
   st.session_state.checkbox_states = {key: False for key in checklist_items}
  
@@ -30,12 +33,13 @@ def reset_progress():
   st.session_state.checkbox_states = {key: False for key in checklist_items}
  
 
+
 cols = st.columns(3)
 i = 0
 for key, label in checklist_items.items():
-col_num = i % 3
-st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key)
-i+=1
+  col_num = i % 3
+  st.session_state.checkbox_states[key] = cols[col_num].checkbox(label, key=key)
+  i+=1
  
 
 completed_count = sum(st.session_state.checkbox_states.values())
